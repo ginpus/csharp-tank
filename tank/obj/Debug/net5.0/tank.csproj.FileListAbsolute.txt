@@ -1,0 +1,16 @@
+F:\Desktop\dotNET\C#\7.8\tank\tank\bin\Debug\net5.0\tank.exe
+F:\Desktop\dotNET\C#\7.8\tank\tank\bin\Debug\net5.0\tank.deps.json
+F:\Desktop\dotNET\C#\7.8\tank\tank\bin\Debug\net5.0\tank.runtimeconfig.json
+F:\Desktop\dotNET\C#\7.8\tank\tank\bin\Debug\net5.0\tank.runtimeconfig.dev.json
+F:\Desktop\dotNET\C#\7.8\tank\tank\bin\Debug\net5.0\tank.dll
+F:\Desktop\dotNET\C#\7.8\tank\tank\bin\Debug\net5.0\ref\tank.dll
+F:\Desktop\dotNET\C#\7.8\tank\tank\bin\Debug\net5.0\tank.pdb
+F:\Desktop\dotNET\C#\7.8\tank\tank\obj\Debug\net5.0\tank.csproj.AssemblyReference.cache
+F:\Desktop\dotNET\C#\7.8\tank\tank\obj\Debug\net5.0\tank.GeneratedMSBuildEditorConfig.editorconfig
+F:\Desktop\dotNET\C#\7.8\tank\tank\obj\Debug\net5.0\tank.AssemblyInfoInputs.cache
+F:\Desktop\dotNET\C#\7.8\tank\tank\obj\Debug\net5.0\tank.AssemblyInfo.cs
+F:\Desktop\dotNET\C#\7.8\tank\tank\obj\Debug\net5.0\tank.csproj.CoreCompileInputs.cache
+F:\Desktop\dotNET\C#\7.8\tank\tank\obj\Debug\net5.0\tank.dll
+F:\Desktop\dotNET\C#\7.8\tank\tank\obj\Debug\net5.0\ref\tank.dll
+F:\Desktop\dotNET\C#\7.8\tank\tank\obj\Debug\net5.0\tank.pdb
+F:\Desktop\dotNET\C#\7.8\tank\tank\obj\Debug\net5.0\tank.genruntimeconfig.cache
