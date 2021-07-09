@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace tank
 {
@@ -10,34 +12,64 @@ namespace tank
             // tanko suviai baigiasi ir paraso, kad soviniu nebera
             Console.Write("-------------------------------------\n| Welcome to Panzer Tank rage game! |\n-------------------------------------\n");
             var desire = "y";
+            int ammo = 10;
+            Tank tank = new Tank(0, 0, ammo, 0, 0);
+
+            var stats = new List<string>();
+
             while (desire == "y")
             {
                 Console.Write("\n1 - Move ahead;\n2 - Move back;\n3 - Turn right;\n4 - Turn left;\n5 - SHOOT!;\n6 - Give information;\n7 - Make it Game Over...;\n\nMake your move: ");
                 var input = Console.ReadLine();
                 var choice = Convert.ToInt32(input);
+
                 if (choice == 1)
                 {
                     Console.WriteLine("Hit the road! Tank is moving ahead\n...................................");
+                    tank.MovesMade++;
+                    tank.VericalPosition++;
                 }
                 else if (choice == 2)
                 {
                     Console.WriteLine("Fall back! Tank is moving backwards\n...................................");
+                    tank.MovesMade++;
+                    tank.VericalPosition--;
                 }
                 else if (choice == 3)
                 {
-                    Console.WriteLine("Alrighty - moving to the right\n...................................");
+                    Console.WriteLine("Alrighty - turning to the right\n...................................");
                 }
                 else if (choice == 4)
                 {
-                    Console.WriteLine("Lefty-loosey - moving to the left\n...................................");
+                    Console.WriteLine("Lefty-loosey - turning to the left\n...................................");
                 }
                 else if (choice == 5)
                 {
-                    Console.WriteLine("KABOOOOM!\n...................................");
+                    if (tank.Ammo != 0)
+                    {
+                        Console.WriteLine("KABOOOOM!\n...................................");
+                        tank.ShotsMade++;
+                        tank.Ammo--;
+                        if (tank.VericalPosition > 0)
+                        {
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Orientation: {tank.Orientation}; Position (North: {tank.VericalPosition}, East: {tank.HorizontalPosition})";
+                            Console.WriteLine(coordinates);
+                            stats.Add(coordinates);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No ammo left! Brace yourself!\n...................................");
+                    }
                 }
                 else if (choice == 6)
                 {
                     Console.WriteLine("Sir, yes, sir! Reporting: \n...................................");
+                    tank.Info();
+                    foreach (var stat in stats)
+                    {
+                        Console.WriteLine(stats);
+                    }
                 }
                 else if (choice == 7)
                 {
@@ -54,13 +86,5 @@ namespace tank
                                 Console.WriteLine(desire);*/
             }
         }
-    }
-
-    internal enum Direction
-    {
-        North,
-        South,
-        East,
-        West
     }
 }
