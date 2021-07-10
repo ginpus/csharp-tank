@@ -14,6 +14,7 @@ namespace tank
         public int ShotsMade;
         public int MovesMade;
         public int Orientation;
+        public string OrientationString; // somehow could not deal with enum to convert into string value...
 
         public void Info()
         {
@@ -45,7 +46,23 @@ namespace tank
             Console.WriteLine($"Shots made: {ShotsMade}");
             Console.WriteLine($"Ammo left: {Ammo}");
             Console.WriteLine($"Moves made: {MovesMade}");
-            Console.WriteLine($"Orientation: {Orientation}");
+            if (Orientation == 0)
+            {
+                OrientationString = "North";
+            }
+            else if (Orientation == 1)
+            {
+                OrientationString = "East";
+            }
+            else if (Orientation == 2)
+            {
+                OrientationString = "South";
+            }
+            else if (Orientation == 3)
+            {
+                OrientationString = "West";
+            }
+            Console.WriteLine($"Orientation: {OrientationString}");
         }
 
         public Tank(int vposition, int hposition, int ammo, int shotsmade, int movesmade)

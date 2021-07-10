@@ -96,9 +96,201 @@ namespace tank
                         Console.WriteLine("KABOOOOM!\n...................................");
                         tank.ShotsMade++;
                         tank.Ammo--;
-                        if (tank.VericalPosition > 0)
+                        if (tank.VericalPosition > 0 && tank.HorizontalPosition > 0)
                         {
-                            string coordinates = $"Shot number: {tank.ShotsMade}; Orientation: {tank.Orientation}; Position (North: {tank.VericalPosition}, East: {tank.HorizontalPosition})";
+                            if (tank.Orientation == 0)
+                            {
+                                tank.OrientationString = "North";
+                            }
+                            else if (tank.Orientation == 1)
+                            {
+                                tank.OrientationString = "East";
+                            }
+                            else if (tank.Orientation == 2)
+                            {
+                                tank.OrientationString = "South";
+                            }
+                            else if (tank.Orientation == 3)
+                            {
+                                tank.OrientationString = "West";
+                            }
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (North: {tank.VericalPosition}, East: {tank.HorizontalPosition})";
+                            Console.WriteLine(coordinates);
+                            stats.Add(coordinates);
+                        }
+                        else if (tank.VericalPosition < 0 && tank.HorizontalPosition > 0)
+                        {
+                            if (tank.Orientation == 0)
+                            {
+                                tank.OrientationString = "North";
+                            }
+                            else if (tank.Orientation == 1)
+                            {
+                                tank.OrientationString = "East";
+                            }
+                            else if (tank.Orientation == 2)
+                            {
+                                tank.OrientationString = "South";
+                            }
+                            else if (tank.Orientation == 3)
+                            {
+                                tank.OrientationString = "West";
+                            }
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition*(-1)}, East: {tank.HorizontalPosition})";
+                            Console.WriteLine(coordinates);
+                            stats.Add(coordinates);
+                        }
+                        else if (tank.VericalPosition < 0 && tank.HorizontalPosition < 0)
+                        {
+                            if (tank.Orientation == 0)
+                            {
+                                tank.OrientationString = "North";
+                            }
+                            else if (tank.Orientation == 1)
+                            {
+                                tank.OrientationString = "East";
+                            }
+                            else if (tank.Orientation == 2)
+                            {
+                                tank.OrientationString = "South";
+                            }
+                            else if (tank.Orientation == 3)
+                            {
+                                tank.OrientationString = "West";
+                            }
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition*(-1)}, West: {tank.HorizontalPosition*(-1)})";
+                            Console.WriteLine(coordinates);
+                            stats.Add(coordinates);
+                        }
+                        else if (tank.VericalPosition > 0 && tank.HorizontalPosition < 0)
+                        {
+                            if (tank.Orientation == 0)
+                            {
+                                tank.OrientationString = "North";
+                            }
+                            else if (tank.Orientation == 1)
+                            {
+                                tank.OrientationString = "East";
+                            }
+                            else if (tank.Orientation == 2)
+                            {
+                                tank.OrientationString = "South";
+                            }
+                            else if (tank.Orientation == 3)
+                            {
+                                tank.OrientationString = "West";
+                            }
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (North: {tank.VericalPosition}, West: {tank.HorizontalPosition*(-1)})";
+                            Console.WriteLine(coordinates);
+                            stats.Add(coordinates);
+                        }
+                        else if (tank.VericalPosition == 0 && tank.HorizontalPosition < 0)
+                        {
+                            if (tank.Orientation == 0)
+                            {
+                                tank.OrientationString = "North";
+                            }
+                            else if (tank.Orientation == 1)
+                            {
+                                tank.OrientationString = "East";
+                            }
+                            else if (tank.Orientation == 2)
+                            {
+                                tank.OrientationString = "South";
+                            }
+                            else if (tank.Orientation == 3)
+                            {
+                                tank.OrientationString = "West";
+                            }
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (Tank is between North and South, West: {tank.HorizontalPosition*(-1)})";
+                            Console.WriteLine(coordinates);
+                            stats.Add(coordinates);
+                        }
+                        else if (tank.VericalPosition == 0 && tank.HorizontalPosition > 0)
+                        {
+                            if (tank.Orientation == 0)
+                            {
+                                tank.OrientationString = "North";
+                            }
+                            else if (tank.Orientation == 1)
+                            {
+                                tank.OrientationString = "East";
+                            }
+                            else if (tank.Orientation == 2)
+                            {
+                                tank.OrientationString = "South";
+                            }
+                            else if (tank.Orientation == 3)
+                            {
+                                tank.OrientationString = "West";
+                            }
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.Orientation}; Position (Tank is between North and South, East: {tank.HorizontalPosition})";
+                            Console.WriteLine(coordinates);
+                            stats.Add(coordinates);
+                        }
+                        else if (tank.VericalPosition > 0 && tank.HorizontalPosition == 0)
+                        {
+                            if (tank.Orientation == 0)
+                            {
+                                tank.OrientationString = "North";
+                            }
+                            else if (tank.Orientation == 1)
+                            {
+                                tank.OrientationString = "East";
+                            }
+                            else if (tank.Orientation == 2)
+                            {
+                                tank.OrientationString = "South";
+                            }
+                            else if (tank.Orientation == 3)
+                            {
+                                tank.OrientationString = "West";
+                            }
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (North: {tank.VericalPosition}, Tank is between East and West)";
+                            Console.WriteLine(coordinates);
+                            stats.Add(coordinates);
+                        }
+                        else if (tank.VericalPosition < 0 && tank.HorizontalPosition == 0)
+                        {
+                            if (tank.Orientation == 0)
+                            {
+                                tank.OrientationString = "North";
+                            }
+                            else if (tank.Orientation == 1)
+                            {
+                                tank.OrientationString = "East";
+                            }
+                            else if (tank.Orientation == 2)
+                            {
+                                tank.OrientationString = "South";
+                            }
+                            else if (tank.Orientation == 3)
+                            {
+                                tank.OrientationString = "West";
+                            }
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition*(-1)}, Tank is between East and West)";
+                            Console.WriteLine(coordinates);
+                            stats.Add(coordinates);
+                        }
+                        else if (tank.VericalPosition == 0 && tank.HorizontalPosition == 0 && tank.MovesMade > 0)
+                        {
+                            if (tank.Orientation == 0)
+                            {
+                                tank.OrientationString = "North";
+                            }
+                            else if (tank.Orientation == 1)
+                            {
+                                tank.OrientationString = "East";
+                            }
+                            else if (tank.Orientation == 2)
+                            {
+                                tank.OrientationString = "South";
+                            }
+                            else if (tank.Orientation == 3)
+                            {
+                                tank.OrientationString = "West";
+                            }
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (Tank is at the very center)";
                             Console.WriteLine(coordinates);
                             stats.Add(coordinates);
                         }
