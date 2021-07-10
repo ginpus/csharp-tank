@@ -55,14 +55,15 @@ namespace tank
             Ammo = ammo;
             ShotsMade = shotsmade;
             MovesMade = movesmade;
+            Orientation = (int)Direction.North;
         }
     }
 
     internal enum Direction
     {
         North,
-        South,
         East,
+        South,
         West
     }
 }

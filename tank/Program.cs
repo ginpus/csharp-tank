@@ -27,21 +27,67 @@ namespace tank
                 {
                     Console.WriteLine("Hit the road! Tank is moving ahead\n...................................");
                     tank.MovesMade++;
-                    tank.VericalPosition++;
+                    if (tank.Orientation == 0)
+                    {
+                        tank.VericalPosition++;
+                    }
+                    else if (tank.Orientation == 1)
+                    {
+                        tank.HorizontalPosition++;
+                    }
+                    else if (tank.Orientation == 2)
+                    {
+                        tank.VericalPosition--;
+                    }
+                    else if (tank.Orientation == 3)
+                    {
+                        tank.HorizontalPosition--;
+                    }
                 }
                 else if (choice == 2)
                 {
                     Console.WriteLine("Fall back! Tank is moving backwards\n...................................");
                     tank.MovesMade++;
-                    tank.VericalPosition--;
+                    if (tank.Orientation == 0)
+                    {
+                        tank.VericalPosition--;
+                    }
+                    else if (tank.Orientation == 1)
+                    {
+                        tank.HorizontalPosition--;
+                    }
+                    else if (tank.Orientation == 2)
+                    {
+                        tank.VericalPosition++;
+                    }
+                    else if (tank.Orientation == 3)
+                    {
+                        tank.HorizontalPosition++;
+                    }
                 }
                 else if (choice == 3)
                 {
                     Console.WriteLine("Alrighty - turning to the right\n...................................");
+                    if (tank.Orientation == 0 || tank.Orientation == 1 || tank.Orientation == 2)
+                    {
+                        tank.Orientation++;
+                    }
+                    else if (tank.Orientation == 3)
+                    {
+                        tank.Orientation = 0;
+                    }
                 }
                 else if (choice == 4)
                 {
                     Console.WriteLine("Lefty-loosey - turning to the left\n...................................");
+                    if (tank.Orientation == 1 || tank.Orientation == 2 || tank.Orientation == 3)
+                    {
+                        tank.Orientation--;
+                    }
+                    else if (tank.Orientation == 0)
+                    {
+                        tank.Orientation = 3;
+                    }
                 }
                 else if (choice == 5)
                 {
