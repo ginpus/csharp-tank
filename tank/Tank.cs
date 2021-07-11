@@ -72,6 +72,24 @@ namespace tank
                 OrientationString = "West";
             }
             Console.WriteLine($"Orientation: {OrientationString}");
+
+            if (ShotsNorth > 0)
+            {
+                Console.WriteLine($"Shots made to the North: {ShotsNorth}");
+            }
+            if (ShotsEast > 0)
+            {
+                Console.WriteLine($"Shots made to the East: {ShotsEast}");
+            }
+            if (ShotsSouth > 0)
+            {
+                Console.WriteLine($"Shots made to the South: {ShotsSouth}");
+            }
+            if (ShotsWest > 0)
+            {
+                Console.WriteLine($"Shots made to the West: {ShotsWest}");
+            }
+
             foreach (var stat in Stats)
             {
                 Console.WriteLine(stat);
@@ -124,6 +142,7 @@ namespace tank
 
         public void TurnRight()
         {
+            //persidaryt su switch. darbui su enum net patogesnis
             Console.WriteLine("Alrighty - turning to the right\n...................................");
             if (Orientation == (int)Direction.North || Orientation == (int)Direction.East || Orientation == (int)Direction.South)
             {
@@ -133,7 +152,6 @@ namespace tank
             {
                 Orientation = (int)Direction.North;
             }
-            // question - is it possible to make the logic that adding above the number of existing enum values returns to the begining?
         }
 
         public void TurnLeft()
@@ -246,6 +264,10 @@ namespace tank
             MovesMade = 0;
             Orientation = (int)Direction.North;
             Stats = new List<string>();
+            ShotsNorth = 0;
+            ShotsEast = 0;
+            ShotsSouth = 0;
+            ShotsWest = 0;
         }
     }
 
