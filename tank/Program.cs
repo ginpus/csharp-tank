@@ -16,8 +16,6 @@ namespace tank
             int maxMoves = 100;
             Tank tank = new Tank(0, 0, ammo, 0, 0);
 
-            var stats = new List<string>();
-
             while (desire == "y" || maxMoves == tank.MovesMade)
             {
                 Console.Write("\n1 - Move ahead;\n2 - Move back;\n3 - Turn right;\n4 - Turn left;\n5 - SHOOT!;\n6 - Give information;\n7 - Make it Game Over...;\n\nMake your move: ");
@@ -117,7 +115,7 @@ namespace tank
                             }
                             string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (North: {tank.VericalPosition}, East: {tank.HorizontalPosition})";
                             Console.WriteLine(coordinates);
-                            stats.Add(coordinates);
+                            tank.Stats.Add(coordinates);
                         }
                         else if (tank.VericalPosition < 0 && tank.HorizontalPosition > 0)
                         {
@@ -139,7 +137,7 @@ namespace tank
                             }
                             string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition * (-1)}, East: {tank.HorizontalPosition})";
                             Console.WriteLine(coordinates);
-                            stats.Add(coordinates);
+                            tank.Stats.Add(coordinates);
                         }
                         else if (tank.VericalPosition < 0 && tank.HorizontalPosition < 0)
                         {
@@ -161,7 +159,7 @@ namespace tank
                             }
                             string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition * (-1)}, West: {tank.HorizontalPosition * (-1)})";
                             Console.WriteLine(coordinates);
-                            stats.Add(coordinates);
+                            tank.Stats.Add(coordinates);
                         }
                         else if (tank.VericalPosition > 0 && tank.HorizontalPosition < 0)
                         {
@@ -183,7 +181,7 @@ namespace tank
                             }
                             string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (North: {tank.VericalPosition}, West: {tank.HorizontalPosition * (-1)})";
                             Console.WriteLine(coordinates);
-                            stats.Add(coordinates);
+                            tank.Stats.Add(coordinates);
                         }
                         else if (tank.VericalPosition == 0 && tank.HorizontalPosition < 0)
                         {
@@ -205,7 +203,7 @@ namespace tank
                             }
                             string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (Tank is between North and South, West: {tank.HorizontalPosition * (-1)})";
                             Console.WriteLine(coordinates);
-                            stats.Add(coordinates);
+                            tank.Stats.Add(coordinates);
                         }
                         else if (tank.VericalPosition == 0 && tank.HorizontalPosition > 0)
                         {
@@ -227,7 +225,7 @@ namespace tank
                             }
                             string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.Orientation}; Position (Tank is between North and South, East: {tank.HorizontalPosition})";
                             Console.WriteLine(coordinates);
-                            stats.Add(coordinates);
+                            tank.Stats.Add(coordinates);
                         }
                         else if (tank.VericalPosition > 0 && tank.HorizontalPosition == 0)
                         {
@@ -249,7 +247,7 @@ namespace tank
                             }
                             string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (North: {tank.VericalPosition}, Tank is between East and West)";
                             Console.WriteLine(coordinates);
-                            stats.Add(coordinates);
+                            tank.Stats.Add(coordinates);
                         }
                         else if (tank.VericalPosition < 0 && tank.HorizontalPosition == 0)
                         {
@@ -271,7 +269,7 @@ namespace tank
                             }
                             string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition * (-1)}, Tank is between East and West)";
                             Console.WriteLine(coordinates);
-                            stats.Add(coordinates);
+                            tank.Stats.Add(coordinates);
                         }
                         else if (tank.VericalPosition == 0 && tank.HorizontalPosition == 0 && tank.MovesMade > 0)
                         {
@@ -293,7 +291,7 @@ namespace tank
                             }
                             string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (Tank is at the very center)";
                             Console.WriteLine(coordinates);
-                            stats.Add(coordinates);
+                            tank.Stats.Add(coordinates);
                         }
                     }
                     else
@@ -305,9 +303,9 @@ namespace tank
                 {
                     Console.WriteLine("Sir, yes, sir! Reporting: \n...................................");
                     tank.Info();
-                    foreach (var stat in stats)
+                    foreach (var stat in tank.Stats)
                     {
-                        Console.WriteLine(stats);
+                        Console.WriteLine(stat);
                     }
                 }
                 else if (choice == 7)

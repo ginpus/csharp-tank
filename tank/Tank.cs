@@ -15,6 +15,7 @@ namespace tank
         public int MovesMade;
         public int Orientation;
         public string OrientationString; // somehow could not deal with enum to convert into string value...
+        public List<string> Stats;
 
         public void Info()
         {
@@ -76,6 +77,7 @@ namespace tank
             ShotsMade = shotsmade;
             MovesMade = movesmade;
             Orientation = (int)Direction.North;
+            Stats = new List<string>();
         }
     }
 
