@@ -13,11 +13,12 @@ namespace tank
             Console.Write("-------------------------------------\n| Welcome to Panzer Tank rage game! |\n-------------------------------------\n");
             var desire = "y";
             int ammo = 10;
+            int maxMoves = 100;
             Tank tank = new Tank(0, 0, ammo, 0, 0);
 
             var stats = new List<string>();
 
-            while (desire == "y")
+            while (desire == "y" || maxMoves == tank.MovesMade)
             {
                 Console.Write("\n1 - Move ahead;\n2 - Move back;\n3 - Turn right;\n4 - Turn left;\n5 - SHOOT!;\n6 - Give information;\n7 - Make it Game Over...;\n\nMake your move: ");
                 var input = Console.ReadLine();
@@ -136,7 +137,7 @@ namespace tank
                             {
                                 tank.OrientationString = "West";
                             }
-                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition*(-1)}, East: {tank.HorizontalPosition})";
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition * (-1)}, East: {tank.HorizontalPosition})";
                             Console.WriteLine(coordinates);
                             stats.Add(coordinates);
                         }
@@ -158,7 +159,7 @@ namespace tank
                             {
                                 tank.OrientationString = "West";
                             }
-                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition*(-1)}, West: {tank.HorizontalPosition*(-1)})";
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition * (-1)}, West: {tank.HorizontalPosition * (-1)})";
                             Console.WriteLine(coordinates);
                             stats.Add(coordinates);
                         }
@@ -180,7 +181,7 @@ namespace tank
                             {
                                 tank.OrientationString = "West";
                             }
-                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (North: {tank.VericalPosition}, West: {tank.HorizontalPosition*(-1)})";
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (North: {tank.VericalPosition}, West: {tank.HorizontalPosition * (-1)})";
                             Console.WriteLine(coordinates);
                             stats.Add(coordinates);
                         }
@@ -202,7 +203,7 @@ namespace tank
                             {
                                 tank.OrientationString = "West";
                             }
-                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (Tank is between North and South, West: {tank.HorizontalPosition*(-1)})";
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (Tank is between North and South, West: {tank.HorizontalPosition * (-1)})";
                             Console.WriteLine(coordinates);
                             stats.Add(coordinates);
                         }
@@ -268,7 +269,7 @@ namespace tank
                             {
                                 tank.OrientationString = "West";
                             }
-                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition*(-1)}, Tank is between East and West)";
+                            string coordinates = $"Shot number: {tank.ShotsMade}; Shots left {tank.Ammo}; Orientation: {tank.OrientationString}; Position (South: {tank.VericalPosition * (-1)}, Tank is between East and West)";
                             Console.WriteLine(coordinates);
                             stats.Add(coordinates);
                         }

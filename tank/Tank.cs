@@ -43,8 +43,11 @@ namespace tank
             {
                 Console.WriteLine($"Tank is neither in East nor West.");
             }
-            Console.WriteLine($"Shots made: {ShotsMade}");
-            Console.WriteLine($"Ammo left: {Ammo}");
+            if (ShotsMade > 0)
+            {
+                Console.WriteLine($"Shots made: {ShotsMade}");
+                Console.WriteLine($"Ammo left: {Ammo}");
+            }
             Console.WriteLine($"Moves made: {MovesMade}");
             if (Orientation == 0)
             {
