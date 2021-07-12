@@ -13,8 +13,7 @@ namespace tank
         public int Ammo;
         public int ShotsMade;
         public int MovesMade;
-        public int Orientation;
-        public string OrientationString; // somehow could not deal with enum to convert into string value...
+        public Direction Orientation;
         public List<string> Stats;
         public int ShotsNorth;
         public int ShotsEast;
@@ -55,23 +54,7 @@ namespace tank
                 Console.WriteLine($"Ammo left: {Ammo}");
             }
             Console.WriteLine($"Moves made: {MovesMade}");
-            if (Orientation == (int)Direction.North)
-            {
-                OrientationString = (string)Direction.North.ToString();
-            }
-            else if (Orientation == (int)Direction.East)
-            {
-                OrientationString = (string)Direction.East.ToString();
-            }
-            else if (Orientation == (int)Direction.South)
-            {
-                OrientationString = (string)Direction.South.ToString();
-            }
-            else if (Orientation == (int)Direction.West)
-            {
-                OrientationString = (string)Direction.West.ToString();
-            }
-            Console.WriteLine($"Orientation: {OrientationString}");
+            Console.WriteLine($"Orientation: {(string)Orientation.ToString()}");
 
             if (ShotsNorth > 0)
             {
@@ -100,21 +83,23 @@ namespace tank
         {
             Console.WriteLine("Hit the road! Tank is moving ahead\n...................................");
             MovesMade++;
-            if (Orientation == 0)
+            switch (Orientation)
             {
-                VericalPosition++;
-            }
-            else if (Orientation == 1)
-            {
-                HorizontalPosition++;
-            }
-            else if (Orientation == 2)
-            {
-                VericalPosition--;
-            }
-            else if (Orientation == 3)
-            {
-                HorizontalPosition--;
+                case Direction.North:
+                    VericalPosition++;
+                    break;
+
+                case Direction.East:
+                    HorizontalPosition++;
+                    break;
+
+                case Direction.South:
+                    VericalPosition--;
+                    break;
+
+                case Direction.West:
+                    HorizontalPosition--;
+                    break;
             }
         }
 
@@ -122,48 +107,58 @@ namespace tank
         {
             Console.WriteLine("Fall back! Tank is moving backwards\n...................................");
             MovesMade++;
-            if (Orientation == (int)Direction.North)
+            switch (Orientation)
             {
-                VericalPosition--;
-            }
-            else if (Orientation == (int)Direction.East)
-            {
-                HorizontalPosition--;
-            }
-            else if (Orientation == (int)Direction.South)
-            {
-                VericalPosition++;
-            }
-            else if (Orientation == (int)Direction.West)
-            {
-                HorizontalPosition++;
+                case Direction.North:
+                    VericalPosition--;
+                    break;
+
+                case Direction.East:
+                    HorizontalPosition--;
+                    break;
+
+                case Direction.South:
+                    VericalPosition++;
+                    break;
+
+                case Direction.West:
+                    HorizontalPosition++;
+                    break;
             }
         }
 
         public void TurnRight()
         {
-            //persidaryt su switch. darbui su enum net patogesnis
             Console.WriteLine("Alrighty - turning to the right\n...................................");
-            if (Orientation == (int)Direction.North || Orientation == (int)Direction.East || Orientation == (int)Direction.South)
+            switch (Orientation)
             {
-                Orientation++;
-            }
-            else if (Orientation == (int)Direction.West)
-            {
-                Orientation = (int)Direction.North;
+                case Direction.North:
+                case Direction.East:
+                case Direction.South:
+                    Orientation++;
+                    break;
+
+                case Direction.West:
+                    Orientation = Direction.North;
+                    break;
             }
         }
 
         public void TurnLeft()
         {
+            //with switch
             Console.WriteLine("Lefty-loosey - turning to the left\n...................................");
-            if (Orientation == (int)Direction.East || Orientation == (int)Direction.South || Orientation == (int)Direction.West)
+            switch (Orientation)
             {
-                Orientation--;
-            }
-            else if (Orientation == (int)Direction.North)
-            {
-                Orientation = (int)Direction.West;
+                case Direction.East:
+                case Direction.South:
+                case Direction.West:
+                    Orientation--;
+                    break;
+
+                case Direction.North:
+                    Orientation = Direction.West;
+                    break;
             }
         }
 
@@ -174,77 +169,76 @@ namespace tank
                 Console.WriteLine("KABOOOOM!\n...................................");
                 ShotsMade++;
                 Ammo--;
-                if (Orientation == 0)
+                switch (Orientation)
                 {
-                    OrientationString = (string)Direction.North.ToString();
-                    ShotsNorth++;
+                    case Direction.North:
+                        ShotsNorth++;
+                        break;
+
+                    case Direction.East:
+                        ShotsEast++;
+                        break;
+
+                    case Direction.South:
+                        ShotsSouth++;
+                        break;
+
+                    case Direction.West:
+                        ShotsWest++;
+                        break;
                 }
-                else if (Orientation == 1)
-                {
-                    OrientationString = (string)Direction.East.ToString();
-                    ShotsEast++;
-                }
-                else if (Orientation == 2)
-                {
-                    OrientationString = (string)Direction.South.ToString();
-                    ShotsSouth++;
-                }
-                else if (Orientation == 3)
-                {
-                    OrientationString = (string)Direction.West.ToString();
-                    ShotsWest++;
-                }
+
                 if (VericalPosition > 0 && HorizontalPosition > 0)
                 {
-                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {OrientationString}; Position (North: {VericalPosition}, East: {HorizontalPosition})";
+                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {(string)Orientation.ToString()}; Position (North: {VericalPosition}, East: {HorizontalPosition})";
                     Console.WriteLine(coordinates);
                     Stats.Add(coordinates);
                 }
                 else if (VericalPosition < 0 && HorizontalPosition > 0)
                 {
-                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {OrientationString}; Position (South: {VericalPosition * (-1)}, East: {HorizontalPosition})";
+                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {(string)Orientation.ToString()}; Position (South: {VericalPosition * (-1)}, East: {HorizontalPosition})";
                     Console.WriteLine(coordinates);
                     Stats.Add(coordinates);
                 }
                 else if (VericalPosition < 0 && HorizontalPosition < 0)
                 {
-                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {OrientationString}; Position (South: {VericalPosition * (-1)}, West: {HorizontalPosition * (-1)})";
+                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {(string)Orientation.ToString()}; Position (South: {VericalPosition * (-1)}, West: {HorizontalPosition * (-1)})";
                     Console.WriteLine(coordinates);
                     Stats.Add(coordinates);
                 }
                 else if (VericalPosition > 0 && HorizontalPosition < 0)
                 {
-                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {OrientationString}; Position (North: {VericalPosition}, West: {HorizontalPosition * (-1)})";
+                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {(string)Orientation.ToString()}; Position (North: {VericalPosition}, West: {HorizontalPosition * (-1)})";
                     Console.WriteLine(coordinates);
                     Stats.Add(coordinates);
                 }
                 else if (VericalPosition == 0 && HorizontalPosition < 0)
                 {
-                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {OrientationString}; Position (Tank is between North and South, West: {HorizontalPosition * (-1)})";
+                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {(string)Orientation.ToString()}; Position (Tank is between North and South, West: {HorizontalPosition * (-1)})";
                     Console.WriteLine(coordinates);
                     Stats.Add(coordinates);
                 }
                 else if (VericalPosition == 0 && HorizontalPosition > 0)
                 {
-                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {OrientationString}; Position (Tank is between North and South, East: {HorizontalPosition})";
+                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {(string)Orientation.ToString()}; Position (Tank is between North and South, East: {HorizontalPosition})";
                     Console.WriteLine(coordinates);
                     Stats.Add(coordinates);
                 }
                 else if (VericalPosition > 0 && HorizontalPosition == 0)
                 {
-                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {OrientationString}; Position (North: {VericalPosition}, Tank is between East and West)";
+                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {(string)Orientation.ToString()}; Position (North: {VericalPosition}, Tank is between East and West)";
                     Console.WriteLine(coordinates);
                     Stats.Add(coordinates);
                 }
                 else if (VericalPosition < 0 && HorizontalPosition == 0)
                 {
-                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {OrientationString}; Position (South: {VericalPosition * (-1)}, Tank is between East and West)";
+                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {(string)Orientation.ToString()}; Position (South: {VericalPosition * (-1)}, Tank is between East and West)";
                     Console.WriteLine(coordinates);
                     Stats.Add(coordinates);
                 }
                 else if (VericalPosition == 0 && HorizontalPosition == 0 && MovesMade > 0)
                 {
-                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {OrientationString}; Position (Tank is at the very center)";
+                    string coordinates = $"Shot number: {ShotsMade}; Shots left {Ammo}; Orientation: {(string)Orientation.ToString()}; Position (Tank is at the very center)";
                     Console.WriteLine(coordinates);
                     Stats.Add(coordinates);
                 }
@@ -262,7 +256,7 @@ namespace tank
             Ammo = ammo;
             ShotsMade = 0;
             MovesMade = 0;
-            Orientation = (int)Direction.North;
+            Orientation = Direction.North;
             Stats = new List<string>();
             ShotsNorth = 0;
             ShotsEast = 0;

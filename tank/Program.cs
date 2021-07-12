@@ -16,7 +16,7 @@ namespace tank
             int maxMoves = 100;
             Tank tank = new Tank(startPositionNorth, startPositionEast, ammo);
 
-            while (desire == "y" || maxMoves >= tank.MovesMade)
+            while (desire == "y")
             {
                 Console.Write("\n1 - Move ahead;\n2 - Move back;\n3 - Turn right;\n4 - Turn left;\n5 - SHOOT!;\n6 - Give information;\n7 - Make it Game Over...;\n\nMake your move: ");
                 var input = Console.ReadLine();
@@ -46,7 +46,7 @@ namespace tank
                 {
                     tank.Info();
                 }
-                else if (choice == 7)
+                else if (choice == 7 || maxMoves >= tank.MovesMade)
                 {
                     Console.WriteLine("---GAME OVER---");
                     desire = "n";
