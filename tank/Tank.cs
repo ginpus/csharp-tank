@@ -19,6 +19,7 @@ namespace tank
         public int ShotsEast;
         public int ShotsSouth;
         public int ShotsWest;
+        private readonly int _maxMoves; // dabar jau enkapsuliuotas kintamasis - nepasiekiamas tiesiogiai, bet tik per metoda
 
         public void Info()
         {
@@ -249,7 +250,7 @@ namespace tank
             }
         }
 
-        public Tank(int vposition, int hposition, int ammo)
+        public Tank(int vposition, int hposition, int ammo, int maxMoves)
         {
             VericalPosition = vposition;
             HorizontalPosition = hposition;
@@ -262,6 +263,7 @@ namespace tank
             ShotsEast = 0;
             ShotsSouth = 0;
             ShotsWest = 0;
+            _maxMoves = maxMoves;
         }
     }
 

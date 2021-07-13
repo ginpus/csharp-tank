@@ -9,14 +9,19 @@ namespace tank
         private static void Main(string[] args)
         {
             Console.Write("-------------------------------------\n| Welcome to Panzer Tank rage game! |\n-------------------------------------\n");
-            var desire = "y";
-            int ammo = 10;
-            int startPositionNorth = 0;
-            int startPositionEast = 0;
-            int maxMoves = 100;
-            Tank tank = new Tank(startPositionNorth, startPositionEast, ammo);
+            Console.Write("Insert number of maximum moves:");
+            var movesInput = Console.ReadLine();
+            var maxMoves = Convert.ToInt32(movesInput);
+            Console.Write("Insert ammount of ammo:");
+            var ammoInput = Console.ReadLine();
+            var ammo = Convert.ToInt32(ammoInput);
 
-            while (desire == "y")
+            var desire = "y";
+            int startPositionNorth = 0; // if desired, could be used as a propt to user (dynamic input into constructor)
+            int startPositionEast = 0; // if desired, could be used as a propt to user (dynamic input into constructor)
+            Tank tank = new Tank(startPositionNorth, startPositionEast, ammo, maxMoves);
+
+            while (desire == "y" && maxMoves > tank.MovesMade)
             {
                 Console.Write("\n1 - Move ahead;\n2 - Move back;\n3 - Turn right;\n4 - Turn left;\n5 - SHOOT!;\n6 - Give information;\n7 - Make it Game Over...;\n\nMake your move: ");
                 var input = Console.ReadLine();
@@ -46,7 +51,7 @@ namespace tank
                 {
                     tank.Info();
                 }
-                else if (choice == 7 || maxMoves >= tank.MovesMade)
+                else if (choice == 7)
                 {
                     Console.WriteLine("---GAME OVER---");
                     desire = "n";
@@ -54,6 +59,11 @@ namespace tank
                 else
                 {
                     Console.WriteLine("Sorry, no such selection. Try again");
+                }
+                if (maxMoves == tank.MovesMade)
+                {
+                    Console.WriteLine("Out of gasoline! Game over...");
+                    tank.Info();
                 }
             }
         }
